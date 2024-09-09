@@ -1,0 +1,28 @@
+@baseUrl = https://8080-victorkashi-atividadesp-74nnjp4wkdk.ws-us116.gitpod.io
+
+###
+GET {{baseUrl}}/moto
+
+###
+POST {{baseUrl}}/moto
+Content-Type: application/json
+
+{
+    "marca": "BMW",
+    "modelo": "G 310 GS"
+}
+
+###
+GET {{baseUrl}}/moto/3
+
+###
+PUT {{baseUrl}}/moto/3
+Content-Type: application/json
+
+{
+    "marca": "BMW",
+    "modelo": "Fazer 250 TRINCA TRINCA QUADRO"
+}
+
+###
+DELETE {{baseUrl}}/moto/4
