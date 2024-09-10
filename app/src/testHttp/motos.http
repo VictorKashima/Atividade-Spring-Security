@@ -1,10 +1,13 @@
 @baseUrl = https://8080-victorkashi-atividadesp-74nnjp4wkdk.ws-us116.gitpod.io
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgTW90b3MiLCJzdWIiOiJ2aWN0b3IiLCJleHAiOjE3MjYwMTM1MjV9.Csw4fYFMS4zcjWpZ7sntwJSDDbKFFAhTkN3rNh2mwYM
 
 ###
 GET {{baseUrl}}/moto
+Authorization: Bearer {{token}}
 
 ###
 POST {{baseUrl}}/moto
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -14,6 +17,7 @@ Content-Type: application/json
 
 ###
 GET {{baseUrl}}/moto/3
+Authorization: Bearer {{token}}
 
 ###
 PUT {{baseUrl}}/moto/3

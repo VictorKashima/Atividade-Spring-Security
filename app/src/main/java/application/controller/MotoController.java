@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RequestMapping("/moto")
 public class MotoController {
     
-
-    
     @Autowired
     private MotoRepository motoRepo;
 

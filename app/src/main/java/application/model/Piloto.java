@@ -14,17 +14,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "motos")
-public class Moto {
+@Table(name = "pilotos")
+public class Piloto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
-    @Column(nullable = false)
-    private String marca;
 
     @Column(nullable = false)
-    private String modelo;
+    private String nome;
+
+    @Column(nullable = false)
+    private String equipe;
     
 }

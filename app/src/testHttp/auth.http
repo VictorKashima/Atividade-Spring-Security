@@ -1,0 +1,10 @@
+@baseUrl = https://8080-victorkashi-atividadesp-74nnjp4wkdk.ws-us116.gitpod.io
+
+###
+POST {{baseUrl}}/auth
+Content-Type: application/json
+
+{
+    "nome": "victor",
+    "equipe": "teste"
+}
