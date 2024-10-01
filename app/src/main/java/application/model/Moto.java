@@ -1,5 +1,6 @@
 package application.model;
 
+import application.record.MotoDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,4 +28,10 @@ public class Moto {
     @Column(nullable = false)
     private String modelo;
     
+    public Moto(MotoDTO dados) {
+        this.id = dados.id();
+        this.modelo = dados.modelo();
+        this.marca = dados.marca();
+    }
+
 }

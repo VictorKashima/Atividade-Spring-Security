@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import application.model.Moto;
-// import application.repository.MotoRepository;
+import application.repository.MotoRepository;
+import application.record.MotoDTO;
 
 @Service
 public class MotoService {
@@ -15,8 +16,8 @@ public class MotoService {
         return motoRepo.findAll();
     }
 
-    public Moto insert(Moto moto) {
-        return motoRepo.save(moto);
+    public Moto insert(MotoDTO moto) {
+        return motoRepo.save(new Moto(moto));
     }
 
 }
