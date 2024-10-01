@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import application.model.Moto;
-import application.repository.MotoRepository;
+// import application.repository.MotoRepository;
 
 @Service
 public class MotoService {
