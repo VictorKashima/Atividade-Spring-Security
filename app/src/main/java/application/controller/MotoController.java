@@ -31,43 +31,42 @@ public class MotoController {
         return motoService.findAll();
     }
 
-    @PostMapping
-    public Moto post(@RequestBody Moto moto) {
-        return motoService.save(moto);
-    }
+    // @PostMapping
+    // public Moto post(@RequestBody Moto moto) {
+    //     return motoService.save(moto);
+    // }
 
-    @GetMapping("/{id}")
-    public Moto getOne(@PathVariable long id) {
-        Optional<Moto> resultado = motoService.findById(id);
-        if (resultado.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Moto não encontrada");
-        }
-        return resultado.get();
-    }
+    // @GetMapping("/{id}")
+    // public Moto getOne(@PathVariable long id) {
+    //     Optional<Moto> resultado = motoService.findById(id);
+    //     if (resultado.isEmpty()) {
+    //         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Moto não encontrada");
+    //     }
+    //     return resultado.get();
+    // }
 
-    @PutMapping("/{id}")
-    public Moto put(@PathVariable long id, @RequestBody Moto novosDados) {
-        Optional<Moto> resultado = motoService.findById(id);
+    // @PutMapping("/{id}")
+    // public Moto put(@PathVariable long id, @RequestBody Moto novosDados) {
+    //     Optional<Moto> resultado = motoService.findById(id);
         
-        if (resultado.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Moto não encontrada");
-        }
+    //     if (resultado.isEmpty()) {
+    //         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Moto não encontrada");
+    //     }
 
-        resultado.get().setModelo(novosDados.getModelo());
-        resultado.get().setMarca(novosDados.getMarca());
+    //     resultado.get().setModelo(novosDados.getModelo());
+    //     resultado.get().setMarca(novosDados.getMarca());
 
-        return motoService.save(resultado.get());
-    }
+    //     return motoService.save(resultado.get());
+    // }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id) {
-        if (!motoService.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Moto não encontrada");
-        }
+    // @DeleteMapping("/{id}")
+    // public void delete(@PathVariable long id) {
+    //     if (!motoService.existsById(id)) {
+    //         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Moto não encontrada");
+    //     }
 
-        motoService.deleteById(id);
-    }
-    
+    //     motoService.deleteById(id);
+    // }
 
 
 }
