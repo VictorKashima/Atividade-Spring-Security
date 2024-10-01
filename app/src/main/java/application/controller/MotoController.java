@@ -1,6 +1,7 @@
 package application.controller;
 
 import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import application.model.Moto;
+import application.record.MotoDTO;
 import application.repository.MotoRepository;
 import application.service.MotoService;
 
@@ -27,23 +29,42 @@ public class MotoController {
     MotoService motoService;
 
     @GetMapping
-    public Iterable<Moto> getAll() {
+    public Iterable<MotoDTO> findAll() {
         return motoService.findAll();
     }
 
-    // @PostMapping
-    // public Moto post(@RequestBody Moto moto) {
-    //     return motoService.save(moto);
-    // }
+    @PostMapping
+    public MotoDTO insert(@RequestBody MotoDTO moto) {
+        return motoService.insert(moto);
+    }
 
-    // @GetMapping("/{id}")
-    // public Moto getOne(@PathVariable long id) {
-    //     Optional<Moto> resultado = motoService.findById(id);
-    //     if (resultado.isEmpty()) {
-    //         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Moto não encontrada");
-    //     }
-    //     return resultado.get();
-    // }
+    @GetMapping("/{id}")
+    public MotoDTO findOne(@PathVariable long id) {
+        MotoDTO resultado = new MotoDTO(null);
+        try {
+            resultado = motoService.findById(id);
+        } catch (NoSuchElementException ex) {
+            throw new ResponseStatusException (
+                HttpStatus.NOT_FOUND, "Moto não encontrada"
+            );
+        }
+
+        return motoService.findById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        motoService.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public MotoDTO update(
+        @PathVariable long id,
+        @RequestBody MotoDTO moto) {
+            return motoService.update(id, moto);
+        }
+
+    }
 
     // @PutMapping("/{id}")
     // public Moto put(@PathVariable long id, @RequestBody Moto novosDados) {
