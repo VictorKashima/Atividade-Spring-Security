@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import application.model.Moto;
-import application.record.MotoDTO;
-import application.repository.MotoRepository;
-import application.service.MotoService;
+import application.model.Questao;
+import application.record.QuestaoDTO;
+import application.repository.QuestaoRepository;
+import application.service.QuestaoService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,69 +22,71 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-@RequestMapping("/moto")
-public class MotoController {
+@RequestMapping("/questao")
+public class QuestaoController {
     
     @Autowired
-    MotoService motoService;
+    QuestaoService questaoService;
 
     @GetMapping
-    public Iterable<MotoDTO> findAll() {
-        return motoService.findAll();
+    public Iterable<QuestaoDTO> findAll() {
+        return questaoService.findAll();
     }
 
     @PostMapping
-    public MotoDTO insert(@RequestBody MotoDTO moto) {
-        return motoService.insert(moto);
+    public QuestaoDTO insert(@RequestBody QuestaoDTO questao) {
+        return questaoService.insert(questao);
     }
 
     @GetMapping("/{id}")
-    public MotoDTO findOne(@PathVariable long id) {
-        MotoDTO resultado = new MotoDTO(null);
+    public QuestaoDTO findOne(@PathVariable long id) {
+        QuestaoDTO resultado = new QuestaoDTO(null);
         try {
-            resultado = motoService.findById(id);
+            resultado = questaoService.findById(id);
         } catch (NoSuchElementException ex) {
             throw new ResponseStatusException (
-                HttpStatus.NOT_FOUND, "Moto não encontrada"
+                HttpStatus.NOT_FOUND, "Questao não encontrada"
             );
         }
 
-        return motoService.findById(id);
+        return questaoService.findById(id);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        motoService.deleteById(id);
+        questaoService.deleteById(id);
     }
 
     @PutMapping("/{id}")
-    public MotoDTO update(
+    public QuestaoDTO update(
         @PathVariable long id,
-        @RequestBody MotoDTO moto) {
-            return motoService.update(id, moto);
+        @RequestBody QuestaoDTO questao) {
+            return questaoService.update(id, questao);
         }
 
-    }
 
     // @PutMapping("/{id}")
-    // public Moto put(@PathVariable long id, @RequestBody Moto novosDados) {
-    //     Optional<Moto> resultado = motoService.findById(id);
+    // public Questao put(@PathVariable long id, @RequestBody Questao novosDados) {
+    //     Optional<Questao> resultado = questaoService.findById(id);
         
     //     if (resultado.isEmpty()) {
-    //         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Moto não encontrada");
+    //         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Questao não encontrada");
     //     }
 
     //     resultado.get().setModelo(novosDados.getModelo());
     //     resultado.get().setMarca(novosDados.getMarca());
 
-    //     return motoService.save(resultado.get());
+    //     return questaoService.save(resultado.get());
     // }
 
     // @DeleteMapping("/{id}")
     // public void delete(@PathVariable long id) {
-    //     if (!motoService.existsById(id)) {
-    //         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Moto não encontrada");
+    //     if (!questaoService.existsById(id)) {
+    //         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Questao não encontrada");
     //     }
 
-    //     motoService.deleteById(id);
+    //     questaoService.deleteById(id);
     // }
+
+
+} 
