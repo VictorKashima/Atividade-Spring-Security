@@ -6,6 +6,6 @@ import application.model.Questao;
 
 public interface QuestaoRepository extends JpaRepository<Questao, Long> {
 
-    public Questao findByModelo(String enunciado);
+    
 
 }
